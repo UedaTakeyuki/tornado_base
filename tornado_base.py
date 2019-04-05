@@ -64,9 +64,14 @@ if __name__ == "__main__":
     2. ./config.py
     '''
     if options.config_file:
-        options.parse_config_file(options.config_file)
+        options.parse_config_file(options.config_file, final=False)
     elif os.path.exists('./config.py'):
-        options.parse_config_file('./config.py')
+        options.parse_config_file('./config.py', final=False)
+
+    '''
+    command line is the first priority
+    '''
+    options.parse_command_line()
 
     # https://stackoverflow.com/questions/547829/how-to-dynamically-load-a-python-class
     if options.additional_module_paths:
