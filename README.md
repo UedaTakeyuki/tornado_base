@@ -44,3 +44,57 @@ class RS_WebCommandPageHandler(tornado.web.RequestHandler):
 ```
 
  ## options
+Following options are available both command line and config file.
+
+ ```
+python tornado_base.py --help
+Usage: tornado_base.py [OPTIONS]
+
+Options:
+
+  --help                           show this help information
+
+/home/pi/.local/lib/python2.7/site-packages/tornado/log.py options:
+
+  --log-file-max-size              max size of log files before rollover
+                                   (default 100000000)
+  --log-file-num-backups           number of log files to keep (default 10)
+  --log-file-prefix=PATH           Path prefix for log files. Note that if you
+                                   are running multiple tornado processes,
+                                   log_file_prefix must be different for each
+                                   of them (e.g. include the port number)
+  --log-rotate-interval            The interval value of timed rotating
+                                   (default 1)
+  --log-rotate-mode                The mode of rotating files(time or size)
+                                   (default size)
+  --log-rotate-when                specify the type of TimedRotatingFileHandler
+                                   interval other options:('S', 'M', 'H', 'D',
+                                   'W0'-'W6') (default midnight)
+  --log-to-stderr                  Send log output to stderr (colorized if
+                                   possible). By default use stderr if
+                                   --log_file_prefix is not set and no other
+                                   logging is configured.
+  --logging=debug|info|warning|error|none 
+                                   Set the Python log level. If 'none', tornado
+                                   won't touch the logging configuration.
+                                   (default info)
+
+tornado_base.py options:
+
+  --additional-module-paths=path1, path2... 
+                                   list of module paths
+  --cert-file                      cert file name for running with ssl (default
+                                   cert.pem)
+  --config-file                    config file path
+  --data-dir                       cert file path for running with ssl
+  --port                           listening port (default 8888)
+  --privkey-file                   privkey file name for running with ssl
+                                   (default privkey.pem)
+  --protocol                       ws: or wss:(default) (default wss:)
+  --static-path                    [mandatory] handler class name of rhizome
+                                   (default sample_handlers/static)
+  --tb-handlers=handler1, handler2... 
+                                   list of Tornado Base handler files
+  --templates-path                 [mandatory] handler class name of rhizome
+                                   (default sample_handlers/templates)
+ ```
