@@ -5,8 +5,8 @@
 protocol = "ws:"
 
 data_dir = "/etc/letsencrypt/live/titurel.uedasoft.com/"
-additional_module_path    = ["sample_handlers"] 
-rhizosperehandlers    = ["sample"]
+additional_module_paths    = ["sample_handlers"] 
+tb_handlers    = ["sample"]
 
 log_file_prefix = "/var/log/tornado_base"
 logging = "debug"

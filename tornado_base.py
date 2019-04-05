@@ -15,48 +15,45 @@ import sys
 import pprint
 import importlib
 
-command = {
-    "order": "exec_bash",
-    "cmd_str": "ls"
-}
+tb_global = []
 
+'''
+   return: taple of (route, class) for tornado app constructor
+'''
 def get_handlerclass_and_route(module, classname):
     handlerclass = getattr(module, classname)
     return (handlerclass.route, handlerclass)
 
-def append_apphandler(handler_list, handler_file):
-    '''
-    Append handler module file to 
-    '''
-    mod = importlib.import_module(handler_file)
+'''
+   return: apphandler_list appended tornado handlers
+'''
+def append_tbhandler(apphandler_list, tb_handler):    
+    global tb_global
 
-    connections={}
-    mod.connections = connections
+    ''' import tb_handler '''
+    mod = importlib.import_module(tb_handler)
 
-    if getattr(mod, "type") == "RS_cdpair_and_connections_shares":
-        requesthandlers.append(get_handlerclass_and_route(mod, "RS_ClientHandler"))
-        requesthandlers.append(get_handlerclass_and_route(mod, "RS_DeviceHandler"))
+    ''' add tb_global '''
+    mod.tb_global = tb_global
 
-        connections_shares = getattr(mod, "connections_shares")
-        for handler_class_name in connections_shares:
-            requesthandlers.append(get_handlerclass_and_route(mod, handler_class_name))
+    tb_handler_classes = getattr(mod, "TB_handler_classes")
+    for handler_class_name in tb_handler_classes:
+        apphandler_list.append(get_handlerclass_and_route(mod, handler_class_name))
 
-    else:
-        requesthandlers.append(get_handlerclass_and_route(mod, "RS_GeneralHandler"))
-    return requesthandlers
+    return apphandler_list
 
 if __name__ == "__main__":
 # options
-    define("protocol",              default="wss:", help="ws: or wss:(default)")
-    define("port",                  default=8888, help="listening port", type=int)    
-    define("data_dir",              default="", help="cert file path for running with ssl")
-    define("cert_file",             default="cert.pem", help="cert file name for running with ssl")
-    define("privkey_file",          default="privkey.pem", help="privkey file name for running with ssl")
-    define("config_file",           default="",         help="config file path")
-    define("tb_handler_files",      default="",         help="list of Tornado Base handler files",multiple=True, metavar="handler1, handler2...")
-    define("additional_module_path",default="",         help="list of module paths",multiple=True, metavar="path1, path2...")
-    define("static_path",           default="sample_handlers/static",        help="[mandatory] handler class name of rhizome")
-    define("templates_path",        default="sample_handlers/templates",     help="[mandatory] handler class name of rhizome")
+    define("protocol",               default="wss:", help="ws: or wss:(default)")
+    define("port",                   default=8888, help="listening port", type=int)    
+    define("data_dir",               default="", help="cert file path for running with ssl")
+    define("cert_file",              default="cert.pem", help="cert file name for running with ssl")
+    define("privkey_file",           default="privkey.pem", help="privkey file name for running with ssl")
+    define("config_file",            default="",         help="config file path")
+    define("tb_handlers",            default="",         help="list of Tornado Base handler files",multiple=True, metavar="handler1, handler2...")
+    define("additional_module_paths",default="",         help="list of module paths",multiple=True, metavar="path1, path2...")
+    define("static_path",            default="sample_handlers/static",        help="[mandatory] handler class name of rhizome")
+    define("templates_path",         default="sample_handlers/templates",     help="[mandatory] handler class name of rhizome")
 
     options.parse_command_line()
 
@@ -76,16 +73,17 @@ if __name__ == "__main__":
         [sys.path.append(x) for x in options.additional_module_paths]
 
 # app
+    BASE_DIR = os.path.dirname(__file__)
+
     app_params = {}
     app_params["handler"]       = []
     app_params["template_path"] = os.path.join(BASE_DIR, options.templates_path)
     app_params["static_path"]   = os.path.join(BASE_DIR, options.static_path)
 
-    for handler_file in options.app_handler_files:
-        requesthandlers = append_apphandler(app_params["handler"], handler_file)
+    for tb_handler in options.tb_handlers:
+        requesthandlers = append_tbhandler(app_params["handler"], tb_handler)
+    print(app_params["handler"])
 
-
-    BASE_DIR = os.path.dirname(__file__)
     app = tornado.web.Application(
         app_params["handler"], 
         template_path = app_params["template_path"],
