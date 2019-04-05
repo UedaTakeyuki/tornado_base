@@ -1,0 +1,13 @@
+[Unit]
+Description=root server for collaborative devices
+After=rc-local.service
+[Service]
+WorkingDirectory=/home/ueda/rhizosphere
+ExecStart=/usr/bin/python3 /home/ueda/rhizosphere/main.py
+Restart=always
+#RestartSec=90
+RestartSec=30
+Type=simple
+PIDFile=/var/run/rhizospere.pid
+[Install]
+WantedBy=multi-user.target
