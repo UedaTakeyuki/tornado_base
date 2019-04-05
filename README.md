@@ -28,28 +28,17 @@ import tornado.web                 '''in case include tornado request handler'''
 from tornado import gen            '''in case to use gen'''
 from tornado.log import app_log    '''in case to use tornado logging'''
 
-''' 
-TB_handler_classes:
-
-The global list of tornado application handler class name in this file.
-The class in this list is gathered and composed for tornado application by tornado_base
-'''
+''' *** TB_handler_classes *** '''
 TB_handler_classes = ["RS_WebPortalPageHander", "RS_WebCommandPageHandler"]
 
 class RS_WebPortalPageHander(tornado.web.RequestHandler):
-    ''' 
-    route:    
-    The route definition, parsed and set by tornado_base
-    '''
+    ''' *** route *** '''
     route = "/"
     def get(self):
         self.render('index.html', connections=connections)
 
 class RS_WebCommandPageHandler(tornado.web.RequestHandler):
-    ''' 
-    route:    
-    The route definition, parsed and set by tornado_base
-    '''
+    ''' *** route *** '''
     route = "/command"
     def get(self):
 ```
