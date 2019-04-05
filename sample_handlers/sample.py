@@ -13,22 +13,17 @@ A global variable of dictionaly "connections" should be added at outside of this
 '''
 
 type = "RS_cdpair_and_connections_shares"
-TB_handler_classes = ["RS_WebPortalPageHander", "RS_WebCommandPageHandler"]
+TB_handler_classes = ["RS_WebHander1", "RS_WebHander2"]
 
 
-class RS_WebPortalPageHander(tornado.web.RequestHandler):
+class RS_WebHander1(tornado.web.RequestHandler):
     route = "/"
     def get(self):
         connections = [1,2,3]
-        self.render('index.html', connections="connections")
+        self.render('index.html')
 
-class RS_WebCommandPageHandler(tornado.web.RequestHandler):
-    route = "/command"
-    def get(self):
-        try:
-            id      = self.get_argument('id')
-            cmd_str = self.get_argument('cmd_str')
-        except tornado.web.MissingArgumentError:
-            pass
+class RS_WebHander2(tornado.web.RequestHandler):
+    route = "/(.*)"
+    def get(self,name):
+        self.render('hello.html', name=name)
 
-        self.render('client.html', connections=connections, id=id)

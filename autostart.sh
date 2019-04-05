@@ -25,7 +25,7 @@ usage_exit(){
 
 on(){
 	sed -i "s@^WorkingDirectory=.*@WorkingDirectory=${SCRIPT_DIR}@" ${CMD}.service
-	sed -i "s@^ExecStart=.*@ExecStart=/usr/bin/python3 ${SCRIPT_DIR}/main.py@" ${CMD}.service
+	sed -i "s@^ExecStart=.*@ExecStart=/usr/bin/python3 ${SCRIPT_DIR}/tornado_base.py@" ${CMD}.service
 	sed -i "s@^PIDFile=.*@PIDFile=/var/run/${CMD}.pid@" ${CMD}.service
 	sudo ln -s ${SCRIPT_DIR}\/${CMD}.service /etc/systemd/system/${CMD}.service
 	sudo systemctl daemon-reload

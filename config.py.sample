@@ -1,10 +1,10 @@
 #-*- coding:utf-8 -*-
-# Copy Right Takeyuki UEDA  © 2018 - All rights reserved.
+# Copy Right Takeyuki UEDA  © 2019 - All rights reserved.
 
 #protocol = "wss:"
 protocol = "ws:"
 
-data_dir = "/etc/letsencrypt/live/titurel.uedasoft.com/"
+data_dir = "/etc/letsencrypt/live/.com/"
 additional_module_paths    = ["sample_handlers"] 
 tb_handlers    = ["sample"]
 

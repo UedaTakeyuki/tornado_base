@@ -2,12 +2,12 @@
 Description=root server for collaborative devices
 After=rc-local.service
 [Service]
-WorkingDirectory=/home/ueda/rhizosphere
-ExecStart=/usr/bin/python3 /home/ueda/rhizosphere/main.py
+WorkingDirectory=
+ExecStart=
 Restart=always
 #RestartSec=90
 RestartSec=30
 Type=simple
-PIDFile=/var/run/rhizospere.pid
+PIDFile=/var/run/tornado_base.pid
 [Install]
 WantedBy=multi-user.target
