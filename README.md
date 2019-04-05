@@ -104,5 +104,21 @@ A config-file must be a python file which is consist of **option=value**. A samp
 The priority of option is as follows:
 
 1. comand line option
-2. in case specified as command line with --config-file option
+2. option file specified as command line with --config-file
+3. ./config.py file
+
+## Autostart settings
+Autostart stettings is available as following:
+
+```bash:
+./autostart.sh --on
+```
+
+Autostart turn off is as follows:
+
+```bash:
+./autostart.sh --off
+```
+
+Internally, **autostart.sh** create **tornado_base** service and turn on/off **enable, start** or **disable, stop**
 
