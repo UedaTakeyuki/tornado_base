@@ -17,8 +17,8 @@ One of an advantage of TB handler is that: tornado handlers in the same TB handl
 Also, a each tornado handlers is provided a same global dictionaly variable **tb_grobal** which can share for server global status.
 
 ### Structure
-* TB handler must have a module global variable **TB_handler_classes** which is a list of class name of tornado application handlers in this file. This is used by tornado_base.
-* Each tornado application hander class must have a class variable **route** for route definition. This is used by tornado base.
+1. **TB_handler_classes**:  TB handler must have a module global variable **TB_handler_classes** which is a list of class name of tornado application handlers in this file. This is used by tornado_base.
+2. **route**: Each tornado application hander class must have a class variable **route** for route definition. This is used by tornado base.
 
 A tipical TB handler is as follows:
 
