@@ -14,7 +14,7 @@ A framework of tornado for modularity.
 
 One of an advantage of TB handler is that: tornado handlers in the same TB handler file can share the **same module global**. You can gather related tornado handler modules on the same TB handler file to share glovals, and separate non-related tornado handlers into each TB handler files as your necesity.
 
-Also, a each tornado handlers is provided a same global dictionaly variable **tb_grobal** which can share for server global status.
+Also, a each tornado handlers is provided a same global dictionaly variable **tb_global** which can share for server global status.
 
 ### Structure
 1. **TB_handler_classes**:  TB handler must have a module global variable **TB_handler_classes** which is a list of class name of tornado application handlers in this file. This is used by tornado_base.
