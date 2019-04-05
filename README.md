@@ -99,8 +99,10 @@ tornado_base.py options:
                                    (default sample_handlers/templates)
  ```
 
-A config-file must be a python file which is consist of **option=value**. A sample is available as [this]()
+A config-file must be a python file which is consist of **option=value**. A sample is available as [this](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py.sample).
 
 The priority of option is as follows:
 
-1. config file 
+1. comand line option
+2. in case specified as command line with --config-file option
+
