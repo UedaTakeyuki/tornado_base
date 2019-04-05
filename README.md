@@ -98,3 +98,9 @@ tornado_base.py options:
   --templates-path                 [mandatory] handler class name of rhizome
                                    (default sample_handlers/templates)
  ```
+
+A config-file must be a python file
+
+The priority of option is as follows:
+
+1. config file 
