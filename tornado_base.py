@@ -63,10 +63,10 @@ if __name__ == "__main__":
     1. options.config_file
     2. ./config.py
     '''
+    if os.path.exists('./config.py'):
+        options.parse_config_file('./config.py', final=False)
     if options.config_file:
         options.parse_config_file(options.config_file, final=False)
-    elif os.path.exists('./config.py'):
-        options.parse_config_file('./config.py', final=False)
 
     '''
     command line is the first priority
