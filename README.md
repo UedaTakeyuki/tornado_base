@@ -98,3 +98,27 @@ tornado_base.py options:
   --templates-path                 [mandatory] handler class name of rhizome
                                    (default sample_handlers/templates)
  ```
+
+A config-file must be a python file which is consist of **option=value**. A sample is available as [this](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py.sample).
+
+The priority of option is as follows:
+
+1. comand line option
+2. option file specified as command line with --config-file
+3. ./config.py file
+
+## Autostart settings
+Autostart stettings is available as following:
+
+```bash:
+./autostart.sh --on
+```
+
+Autostart turn off is as follows:
+
+```bash:
+./autostart.sh --off
+```
+
+Internally, **autostart.sh** create **tornado_base** service and turn on/off **enable, start** or **disable, stop**
+
