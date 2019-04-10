@@ -31,7 +31,7 @@ An element is cleated by screen; filled by remote.
 connections={}
 
 class Screen_WebHander(tornado.web.RequestHandler):
-  route = "/screen"
+  route = "/screen/screen"
   def get(self):
     self.render('screen.html')
 
