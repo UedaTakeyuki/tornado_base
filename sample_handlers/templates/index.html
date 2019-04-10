@@ -6,56 +6,81 @@
 <!-- https://stackoverflow.com/questions/12993835/passing-a-custom-python-function-into-a-tornado-template -->
 {% import pprint %}
 <html>
+
   <head>
     <title>Hello</title>
-    <link rel="stylesheet" href="{{ static_url('node_modules/materialize-css/dist/css/materialize.min.css') }}" />
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-			footer {
-   			position: fixed;
-   			left: 0;
-   			bottom: 0;
-   			width: 100%;
-   			background-color: red;
-   			color: white;
-   			text-align: center;
-			}
-  		main {
-    		flex: 1 0 auto;
-  		}
-			body {
-    		display: flex;
-    		min-height: 100vh;
-    		flex-direction: column;
-    		margin-bottom:250px;
-			}
-		</style>
   </head>
   <body>
-  	<div class="navbar-fixed">
-  	<nav>
-    	<div class="nav-wrapper">
-    		<a href="#" class="brand-logo center">Devices</a>
-    	</div>
-  	</nav></div>
-  	<!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="{{ static_url('node_modules/materialize-css/dist/js/materialize.min.js') }}">
-    </script>
-    <script type="text/javascript">
-		</script>
-		<div class = "row">
-    </div>
+    <h1>request</h1>
+    <pre>
+      {{pprint.pformat(request)}}
+    </pre>
 
-    <footer class="page-footer">
-      <div class="container">
-        <div class="footer-copyright">
-          <div class="container">
-            © 2019 - Copyright Takeyuki UEDA
-          </div>
-        </div>
-      </div>
-    </footer>
+    <h2>vars(request)</h2>
+    <pre>
+      {{pprint.pformat(vars(request))}}
+    </pre>
+
+    <h1>request.connection</h1>
+    <pre>
+    {{pprint.pformat(request.connection)}}
+    </pre>
+
+    <h2>vars(request.connection)</h2>
+    <pre>
+    {{pprint.pformat(vars(request.connection))}}
+    </pre>
+
+    <h3>vars(request.connection._close_callback)</h3>
+    <pre>
+      {{pprint.pformat(vars(request.connection._close_callback))}}
+    </pre>
+
+    <h3>vars(request.connection._finish_future)</h3>
+    <pre>
+      {{pprint.pformat(vars(request.connection._finish_future))}}
+    </pre>
+
+    <h3>vars(request.connection.context)</h3>
+    <pre>
+      {{pprint.pformat(vars(request.connection.context))}}
+    </pre>
+
+    <h3>vars(request.connection.params)</h3>
+    <pre>
+      {{pprint.pformat(vars(request.connection.params))}}
+    </pre>
+
+    <h3>vars(request.connection.stream)</h3>
+    <pre>
+      {{pprint.pformat(vars(request.connection.stream))}}
+    </pre>
+
+    <h1>request.headers</h1>
+    <pre>
+      {{pprint.pformat(request.headers)}}
+    </pre>
+
+    <h2>vars(request.headers)</h2>
+    <pre>
+      {{pprint.pformat(vars(request.headers))}}
+    </pre>
+
+    <h2>request.headers.keys and values</h2>
+    <ul>
+      {% for key in request.headers.keys() %}
+        <li>{{key}} = {{request.headers.get(key)}}</li>
+      {% end %}
+    </ul>
+
+    <h1>request.server_connection</h1>
+    <pre>
+      {{pprint.pformat(request.server_connection)}}
+
+    <h2>vars(request.server_connection)</h2>
+    <pre>
+      {{pprint.pformat(vars(request.server_connection))}}
+    </pre>
 
   </body>
 </html>

@@ -19,8 +19,8 @@ TB_handler_classes = ["RS_WebHander1", "RS_WebHander2"]
 class RS_WebHander1(tornado.web.RequestHandler):
     route = "/"
     def get(self):
-        connections = [1,2,3]
-        self.render('index.html')
+        request = self.request
+        self.render('index.html', request=request)
 
 class RS_WebHander2(tornado.web.RequestHandler):
     route = "/(.*)"
