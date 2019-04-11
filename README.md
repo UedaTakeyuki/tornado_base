@@ -44,12 +44,25 @@ class RS_WebCommandPageHandler(tornado.web.RequestHandler):
 ```
 ## How to use
 
+Run with sample handler ans sample config.py as follows:
+
 ```bash:
 python tornado_base.py [OPTIONS]
 
 #or
 python -m tornado_base [OPTIONS]
 ```
+
+With the sample config.py:
+- The sample handlers [sample.py](https://github.com/UedaTakeyuki/tornado_base/blob/master/sample_handlers/sample.py) and [ws_exchange.py
+](https://github.com/UedaTakeyuki/tornado_base/blob/master/sample_handlers/ws_exchange.py) is used for tornado application.
+  - You can change the **handlers which are used** by editting the line **[tb_handlers](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py#L9)** on the config.py file, or specifiy **--tb_handlers** option.
+  - You can change/add **handler import path** by editting the line **[additional_module_paths](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py#L10)** on the config.py file, or specifiy **--additional_module_paths** option.
+  - You can change **template(used by handlers) import path** by editting the line **[templates_path](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py#L8)** on the config.py file, or specifiy **--templates_path** option.
+  
+- Tornado log is put to the /var/log/tornado_base/tb.log
+  - You can change **log output path** by editting the line **[log_file_prefix](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py#12)** on the config.py file, or specifiy **--log_file_prefix** option.
+  - You can disable log output to comment out the line [log_file_prefix](https://github.com/UedaTakeyuki/tornado_base/blob/master/config.py#L12) on the config.py file, **and** **not** specifiy **--log_file_prefix** option.
 
 
 ### options
