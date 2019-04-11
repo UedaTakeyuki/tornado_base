@@ -2,5 +2,4 @@ __pycache__
 *.pyc
 test
 node_modules
-config.py
 
