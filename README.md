@@ -2,11 +2,12 @@
 A framework of tornado for modularity.
 
 ## Purpose
-* Modularity  of Tornado Application handler file.
-* Reusability of option definition
+* Easy way to make complex tornado application by:
+  * Add a modularity  of Tornado Application handler file.
+  * Add a reusability of option definition.
 
 ## Architecture
-* **tornado_base**: parse options, read **TB handler**s, compose appropricate tornado App class, then run tornado server.  
+* **tornado_base**: Application engin to parse options, read **TB handler**s, compose appropricate tornado App class, then run tornado server.  
 * **TB handler**: Application definition module files
 
 ### TB handler
